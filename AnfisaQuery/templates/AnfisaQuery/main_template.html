@@ -1,0 +1,81 @@
+{% extends 'AnfisaQuery/base.html' %}
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+       <h1 class="display-5 fw-bold text-body-emphasis">Анфиса</h1>
+    <p class="col-lg-6 mx-auto">
+      <p class="lead mb-4">Привет! Меня зовут Анфиса. Я начинающий онлайн ассистент.  </p>
+    <p class="lead mb-4"> Ты можешь рассказать мне о своих друзьях и городах в которых они живут.</p>
+    <p class="lead mb-4"> Для этого введи одно имя и один город и нажми сохранить </p>
+    <p class="lead mb-4"> Когда введёшь все имена и города нажми "Далее" </p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <div class="col-sm-6">
+<form method="post">
+    {% csrf_token %}
+    {{ form.name }}<br>
+    {{ form.city }}<br>
+
+
+
+              <div class="invalid-feedback"><br>
+                Требуется ввести имя.
+              </div>
+
+
+          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <div class="col-sm-6">
+
+
+
+
+              <div class="invalid-feedback">
+               Требуется ввести город.
+              </div>
+
+<div class="d-grid gap-2">
+    <button class="btn btn-outline-secondary" type="submit">Добавить</button>
+
+  </div>
+
+
+            </div>
+
+      </div>
+     </form>
+    </div>
+  </div>
+
+<div class = 'alert alert-warning'>
+
+    {% if names  %}
+    <h4>Добавленные друзья:</h4>
+      {% for el in names %}
+        <div class = 'alert alert-warning'>
+        <h3>{{ el.name }}</h3>
+        <p>{{ el.city }}</p>
+        </div>
+        {% endfor %}
+    {% else %}
+        <h4>Здесь будут появляться добавленные друзья.</h4>
+    {% endif %}
+
+</div>
+
+
+
+{% endblock %}
+
+
+{% block activeindex%}"nav-link active"
+{% endblock %}
+
+{% block activelogin%}"nav-link"
+{% endblock %}
+
+{% block activeabout%}"nav-link"
+{% endblock %}
+
+
+
