@@ -33,5 +33,5 @@ def about(request):
     return render(request, 'AnfisaQuery/about.html')
 
 def query(request):
-    return redner(request,'AnfisaQuery/query.html')
+    return render(request,'AnfisaQuery/query.html')
 
