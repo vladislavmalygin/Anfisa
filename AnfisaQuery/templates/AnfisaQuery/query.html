@@ -5,17 +5,44 @@
 
 {% block content %}
 
+<form method="post">
+{% csrf_token %}
+{{ form.query }}
 
-    <input type="text" name="query" class="form-control" placeholder="Введите вопрос)" maxlength="100" required="" id="id_name">
 
 
 
+<br>
     <br>
+
+    <button class="btn btn-primary" type="submit">Задать вопрос</button>
+<br>
     <br>
-    <br>
-    <br>
-    <br>
-    <br>
+<span>{{ error }}</span>
+</form>
+{% for el in queries %}
+<div class="row align-items-md-stretch">
+      <div class="col-md-6">
+        <div class="h-100 p-5 text-bg-dark rounded-3">
+          <h2>Здесь будут появляться ваши вопросы</h2>
+
+          <p>{{ el.query}}</p>
+
+        </div>
+      </div>
+{%endfor%}
+
+
+
+
+      <div class="col-md-6">
+        <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+          <h2>Здесь будут появляться наши ответы</h2>
+          <p>placeholder</p>
+
+        </div>
+      </div>
+    </div>
 
 
 
