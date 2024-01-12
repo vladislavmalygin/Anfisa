@@ -2,6 +2,8 @@ from django.shortcuts import render
 
 from .forms import AnfisaDatabaseForm
 from .models import AnfisaDatabase
+from .models import QueryDatabase
+from .forms import QueryDatabaseForm
 
 
 # Create your views here.
@@ -34,6 +36,18 @@ def about(request):
 
 
 def query(request):
+    error = ''
+    if request.method == 'POST':
+        form = QueryDatabaseForm(request.POST)
+        if form.is_valid():
+            form.save()
+        else:
+            error = 'Форма была неверной'
+    queries = QueryDatabase.objects.order_by('-id')
+    form = QueryDatabaseForm()
+    context = {
+        'queries': queries,
+        'form': form
+    }
 
-    return render(request,'AnfisaQuery/query.html')
-
+    return render(request, 'AnfisaQuery/query.html', context)
