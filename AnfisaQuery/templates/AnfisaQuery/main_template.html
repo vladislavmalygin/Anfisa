@@ -24,34 +24,35 @@
               </div>
 
 
-          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <div class="col-sm-6">
+    <a class="col-sm-6">
 
 
 
 
-              <div class="invalid-feedback">
-               Требуется ввести город.
-              </div>
-
-<div class="d-grid gap-2">
-    <button class="btn btn-outline-secondary" type="submit">Добавить</button><br>
-
-  </div>
+        <div class="invalid-feedback">
+            Требуется ввести город.
+        </div>
 
 
-            </div>
+        <div class="d-grid gap-2">
+            <button class="btn btn-outline-secondary" type="submit">Добавить</button><br>
 
-      </div>
+        </div>
 
-     </form>
+        <button class="btn btn-primary" type="button">Спросить у Анфисы</button><a href="{% url 'about' %}"></a></a><br>
+
+
+
+
+</form>
+
     </div>
   </div>
 
 <div class = 'alert alert-warning'>
 
     {% if names  %}
-    <h4>Добавленные друзья:</h4>
+    <h4>Добавленные друзья:</h4><br>
       {% for el in names %}
         <div class = 'alert alert-warning'>
         <h3>{{ el.name }}</h3>
