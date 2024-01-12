@@ -32,6 +32,6 @@ def login(request):
 def about(request):
     return render(request, 'AnfisaQuery/about.html')
 
+
 def query(request):
-    return render(request,'AnfisaQuery/query.html')
-#fixed
+    return render(request, 'AnfisaQuery/query.html')
