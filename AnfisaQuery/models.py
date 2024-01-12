@@ -10,3 +10,21 @@ class AnfisaDatabase(models.Model):
     class Meta:
         verbose_name = 'Имя'
         verbose_name_plural = 'Имена'
+
+class TimeZones(models.Model):
+    city = models.CharField('Город',max_length=50)
+    timezone = models.IntegerField('Разница времени с UTC')
+
+
+
+
+
+
+    def ___str___(self):
+        return self.city, self.timezone
+
+    class Meta:
+        verbose_name: str = 'Город'
+        verbose_name = 'Разница времени с UTC'
+        verbose_name_plural = 'Значения разницы во времени с UTC'
+
