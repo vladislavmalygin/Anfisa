@@ -31,7 +31,7 @@ def index(request):
         'names': names,
     }
 
-    return render(request, 'AnfisaQuery/index.html', context)
+    return render(request, 'AnfisaQuery/main_template.html', context)
 
 
 def login(request):
