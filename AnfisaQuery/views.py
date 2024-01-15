@@ -4,6 +4,13 @@ from .forms import AnfisaDatabaseForm
 from .models import AnfisaDatabase
 from .models import QueryDatabase
 from .forms import QueryDatabaseForm
+import datetime as dt
+import requests
+from .models import TimeZones
+from .AnfisaLogic import  format_count_friends,what_time,what_weather,process_anfisa,process_friend,process_query
+
+
+
 
 
 # Create your views here.
@@ -24,7 +31,7 @@ def index(request):
         'names': names,
     }
 
-    return render(request, 'AnfisaQuery/main_template.html', context)
+    return render(request, 'AnfisaQuery/index.html', context)
 
 
 def login(request):
@@ -45,9 +52,15 @@ def query(request):
             error = 'Форма была неверной'
     queries = QueryDatabase.objects.order_by('-id')
     form = QueryDatabaseForm()
+
+
+
+
     context = {
         'queries': queries,
         'form': form
     }
 
     return render(request, 'AnfisaQuery/query.html', context)
+
+
