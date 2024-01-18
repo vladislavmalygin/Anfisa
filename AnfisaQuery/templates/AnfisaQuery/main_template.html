@@ -50,17 +50,18 @@
     </div>
   </div>
 <li class="btn btn-outline-primary"><a href="query" class="nav-link active px-2 text-body-primary">Далее</a></li></a><br>
-<div class = 'alert alert-warning'>
+<div class = 'alert alert-secondary'>
 
 
     {% if names  %}
     <h4>Добавленные друзья:</h4><br>
       {% for el in names %}
-        <div class = 'alert alert-warning'>
+        <div class = 'alert alert-secondary'>
         <h3>{{ el.name }}</h3>
         <p>{{ el.city }}</p>
         </div>
         {% endfor %}
+
     {% else %}
         <h4>Здесь будут появляться добавленные друзья.</h4>
     {% endif %}

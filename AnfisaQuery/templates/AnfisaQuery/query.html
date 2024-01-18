@@ -1,4 +1,6 @@
 {% extends 'AnfisaQuery/base.html' %}
+
+
 {% block title %}
 Запросы
 {% endblock %}
@@ -21,28 +23,32 @@
 <span>{{ error }}</span>
 </form>
 {% for el in queries %}
-<div class="row align-items-md-stretch">
-      <div class="col-md-6">
-        <div class="h-100 p-5 text-bg-dark rounded-3">
-          <h2>Ваши вопросы:</h2>
+<div class='alert alert-secondary'>
 
-          <p>{{ el.query}}</p>
+      <p id="left-field">
 
-        </div>
-      </div>
+           {{ el.query}}</p>
+
+
+    </div>
+
+
 {%endfor%}
 
+{% if answer != 'ответ'%}:
+
+<div class='alert alert-primary'>
+      <p id="right-field">
+
+          {{ answer }} </p>
 
 
-
-      <div class="col-md-6">
-        <div class="h-100 p-5 bg-body-tertiary border rounded-3">
-          <h2>Наши ответы:</h2>
-          <p>placeholder</p>
-
-        </div>
-      </div>
     </div>
+
+
+ {% endif %}
+
+
 
 
 
@@ -72,7 +78,7 @@
       <div class="col">
         <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('https://getbootstrap.com/docs/5.3/examples/features/unsplash-photo-1.jpg');">
           <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">У Анфисы можно спросить "Сколько у меня друзей?","Кто мои друзья?" и "Где мои друзья?"</h3>
+            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">У Анфисы можно спросить: "Анфиса,сколько у меня друзей?","Анфиса,кто мои друзья?" и "Анфиса,где мои друзья?"</h3>
             <ul class="d-flex list-unstyled mt-auto">
               <li class="me-auto">
 
@@ -93,7 +99,7 @@
       <div class="col">
         <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('https://getbootstrap.com/docs/5.3/examples/features/unsplash-photo-1.jpg');">
           <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Друзьям можно задать вопросы:"Петя, как погода?" или "Вася, который час?"</h3>
+            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Друзьям можно задать вопросы:"Алексей, ты где?","Петя, как погода?" или "Вася, который час?"</h3>
             <ul class="d-flex list-unstyled mt-auto">
               <li class="me-auto">
 

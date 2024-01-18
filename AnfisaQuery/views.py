@@ -1,21 +1,15 @@
 from django.shortcuts import render
 
+from .AnfisaLogic import pre_process_query
 from .forms import AnfisaDatabaseForm
+from .forms import QueryDatabaseForm
 from .models import AnfisaDatabase
 from .models import QueryDatabase
-from .forms import QueryDatabaseForm
-import datetime as dt
-import requests
-from .models import TimeZones
-from .AnfisaLogic import  format_count_friends,what_time,what_weather,process_anfisa,process_friend,process_query
-
-
-
 
 
 # Create your views here.
 def index(request):
-    names = AnfisaDatabase.objects.order_by('-id')[:5]
+    names = AnfisaDatabase.objects.order_by('-id')
     if request.method == 'POST':
         form = AnfisaDatabaseForm(request.POST)
         if form.is_valid():
@@ -48,19 +42,24 @@ def query(request):
         form = QueryDatabaseForm(request.POST)
         if form.is_valid():
             form.save()
+
         else:
             error = 'Форма была неверной'
-    queries = QueryDatabase.objects.order_by('-id')
+    queries = QueryDatabase.objects.order_by('-id')[:1]
     form = QueryDatabaseForm()
+    answer = 'ответ'
 
+    if request.method == 'POST':
+        for query in queries:
+            QUERY_BASE = QueryDatabase.objects.order_by('-id')[:1]
+            query_get = str(QUERY_BASE)
 
-
+            answer = pre_process_query(query_get)
 
     context = {
         'queries': queries,
-        'form': form
+        'form': form,
+        'answer': answer,
     }
 
     return render(request, 'AnfisaQuery/query.html', context)
-
-
