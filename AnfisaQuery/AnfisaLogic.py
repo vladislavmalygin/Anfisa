@@ -44,9 +44,9 @@ def process_anfisa(query):
         return f'Твои друзья: {friends_string}'
     elif query == ' где мои друзья?':
 
-        cities_string = city_q.replace("'", '')
+        city = (str(city_w).replace("<QuerySet [", "").replace("]>", "")).replace("'", '')
 
-        return f'Твои друзья в городах: {cities_string}'
+        return f'Твои друзья в городах: {city}'
     else:
         return f'<неизвестный запрос:>{query}'
 
