@@ -9,8 +9,7 @@ answer = str()
 DATABASE = AnfisaDatabase.objects.all()
 QUERY_BASE = QueryDatabase.objects.all()
 query_get = str(QUERY_BASE)
-people = AnfisaDatabase.objects.values('name', 'city')
-people_dict = {person['name']: person['city'] for person in people}
+
 
 for obj in DATABASE:
     name_q = str(AnfisaDatabase.objects.values_list('name', flat=True)).replace("<QuerySet [",
@@ -53,6 +52,8 @@ def process_anfisa(query):
 
 def process_friend(name_q, query):
     if AnfisaDatabase.objects.filter(name=name_q).exists():
+        people = AnfisaDatabase.objects.values('name', 'city')
+        people_dict = {person['name']: person['city'] for person in people}
         city_q = people_dict[name_q]
         if query == ' ты где?':
 
